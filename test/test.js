@@ -74,3 +74,24 @@ describe('Basic', function(){
 	});
 });
 
+
+describe('Context', function(){
+	it('Should get context', function(){
+		var str = '$.t("Hello", {"context": "world"});';
+		var result = txtract.extract(str);
+		var expected = [{
+			string: "Hello",
+			context: "world"
+		}];
+		assert.equal(JSON.stringify(result), JSON.stringify(expected));
+	});
+	it('Should get context if property is defained as Identifier', function(){
+		var str = '$.t("Hello", {context: "world"});';
+		var result = txtract.extract(str);
+		var expected = [{
+			string: "Hello",
+			context: "world"
+		}];
+		assert.equal(JSON.stringify(result), JSON.stringify(expected));
+	});
+});
